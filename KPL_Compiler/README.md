@@ -1,6 +1,6 @@
-# How to run the code
-  * First download all the code and test file.
-  * In terminal, go to the code file directory, then run the following commands:
+## How to run:
+  * First download all the code and test files.
+  * In the code file directory, run the following commands:
     ```
     $ make
     $ ./scanner ../test/{test_file}.kpl
