@@ -1,0 +1,19 @@
+PROGRAM SUM;
+VAR i : INTEGER;
+    n : INTEGER;
+    tmp : INTEGER;
+    sum : INTEGER;
+
+BEGIN
+    CALL READI(n);
+    sum := 0;
+    BEGIN
+        FOR i := 1 TO n DO
+            BEGIN
+                CALL READI(tmp);
+                sum := sum + tmp;
+            END;
+    END;
+    CALL WRITEI(sum);
+End.
+    
