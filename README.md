@@ -1,6 +1,6 @@
 # Compiler Construction
 
-1. Compiler
+1. Scanner
     - [x] Completed 
 2. Parser
     - [x] Completed
