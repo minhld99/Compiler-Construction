@@ -1,5 +1,5 @@
 # Compiler Construction
-Build Compiler for KPL (Kyoto Programming Language) by C
+Build Compiler for KPL by C
 
 #### Front-end
 1. Scanner
