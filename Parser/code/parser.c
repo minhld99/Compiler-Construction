@@ -80,6 +80,39 @@ void compileBlock5(void) {
   compileStatements();
   eat(KW_END);
 }
+// ================================
+// void compileDeclarations(void) {
+//   switch (lookAhead->tokenType)
+//   {
+//   case KW_CONST:
+//     compileConstDecls();
+//     compileDeclarations();
+//     break;
+//   case KW_VAR:
+//     compileVarDecls();
+//     compileDeclarations();
+//     break;
+//   case KW_TYPE:
+//     compileTypeDecls();
+//     compileDeclarations();
+//     break;
+//   default:
+//     compileSubDecls();
+//     compileDeclarations();
+//     break;
+//   }
+// }
+// ================================
+// void compileVariable(void) {
+//   eat(TK_IDENT);
+//   while (lookAhead->tokenType==SB_LSEL) {
+//     eat(SB_LSEL);
+//     compileExpression();
+//     eat(SB_RSEL);
+//   }
+// }
+// ================================
+
 // 10, 11
 void compileConstDecls(void) {
 while (lookAhead->tokenType==TK_IDENT) 
@@ -120,6 +153,20 @@ void compileVarDecl(void) {
   compileType();
   eat(SB_SEMICOLON);
 }
+// ================================
+// void compileParamlist(void) {
+//   if (lookAhead->tokenType==SB_LPAR)
+//     eat(SB_LPAR);
+//   if (lookAhead->tokenType==KW_VAR)
+//     eat(KW_VAR);
+//   eat(TK_IDENT);
+//   eat(SB_COLON);
+//   compileBasicType();
+//   if (lookAhead->tokenType==SB_SEMICOLON)
+//     compileParamlist();
+//   eat(SB_RPAR);
+// } 
+// ================================
 // 19, 20, 21
 void compileSubDecls(void) {
   assert("Parsing subtoutines ....");

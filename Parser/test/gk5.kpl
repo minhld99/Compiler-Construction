@@ -1,0 +1,11 @@
+PROGRAM gk;
+
+VAR A : ARRAY(. 5 .) OF ARRAY(. 5 .) OF INTEGER;
+    I : INTEGER;
+    J : INTEGER;
+
+BEGIN
+    FOR I := 1 TO 5 DO
+        FOR J := 1 TO 5 DO
+            A(.I.)(.J.) := 0;
+END.

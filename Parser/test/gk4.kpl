@@ -1,0 +1,31 @@
+PROGRAM gk;
+CONST MAX = 10;
+TYPE T = INTEGER;
+VAR  A : ARRAY(. 10 .) OF T;
+     N : INTEGER;
+     K : INTEGER;
+     I : INTEGER;
+     TMP : INTEGER;
+BEGIN
+    TMP := A(.1.);
+    FOR I := 2 TO N DO
+        IF A(.I.) > TMP THEN TMP := A(.I.);
+    CALL WRITEI(TMP);
+    FOR I := 1 TO N DO
+        IF A(.I.) = TMP THEN CALL WRITEI(I);
+END;
+
+BEGIN
+    N := 11;
+    WHILE N > MAX DO N := READI;
+    FOR I := 1 TO N DO
+        A(.I.) := READI;
+    
+    TMP := A(.1.);
+    FOR I := 2 TO N DO
+        IF A(.I.) > TMP THEN TMP := A(.I.);
+    CALL WRITEI(TMP);
+    FOR I := 1 TO N DO
+        IF A(.I.) = TMP THEN CALL WRITEI(I);
+END.
+    

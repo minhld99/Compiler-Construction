@@ -84,6 +84,37 @@ Token* readNumber(void) {
   return token;
 }
 
+// Token* readNumber(void) {
+//     Token *token = makeToken(TK_NUMBER, lineNo, colNo);
+//     int dem = 0;
+
+//     while ((currentChar != EOF) && (charCodes[currentChar] == CHAR_DIGIT)) {
+//         token->string[dem++] = (char)currentChar;
+//         readChar();
+//     }
+//     if (dem <= 9) {//neu < 10 ki tu thi auto dung
+//         token->string[dem] = '\0';
+//         token->value = atoi(token->string);
+//         return token;
+//     }
+//     else{//neu = 10
+//         if (strcmp(token->string,"4294967295") <= 0) {
+//             token->string[10] = '\0';
+//             token->value = atoi(token->string);
+//             if(dem >= 11)
+//                 error(ERR_NUMBERTOOLONG, token->lineNo, token->colNo);
+//             return token;
+//         }
+//         else{
+//             strncpy(token->string, token->string, 9);
+//             token->string[9] = '\0';
+//             token->value = atoi(token->string);
+//             error(ERR_NUMBERTOOLONG, token->lineNo, token->colNo);
+//             return token;
+//         }
+//     }
+// }
+
 Token* readConstChar(void) {
   // TODO
   Token *token = makeToken(TK_CHAR, lineNo, colNo);
@@ -93,6 +124,11 @@ Token* readConstChar(void) {
     readChar();
     if (charCodes[currentChar] == CHAR_SINGLEQUOTE) {
       token->string[1] = '\0';
+      for (int i = 0; i < 3; i++) {
+        readChar();
+        if (charCodes[currentChar] != CHAR_SINGLEQUOTE)
+          error(ERR_INVALIDSYMBOL, token->lineNo, token->colNo);
+      }
       readChar();
       return token;
     }
@@ -105,12 +141,25 @@ Token* readConstChar(void) {
   return token;
 }
 
+// void skipComment2(void){
+//   while(currentChar != EOF) {
+//     readChar();
+//     if (currentChar != '}') continue;
+//   } 
+// }
+
 Token* getToken(void) {
   Token *token;
   //int ln, cn;
 
   if (currentChar == EOF) 
     return makeToken(TK_EOF, lineNo, colNo);
+
+  // if (currentChar == '{') {
+  //   skipComment2();
+  //   readChar();
+  //   return getToken();
+  // }
 
   switch (charCodes[currentChar]) {
   case CHAR_SPACE: skipBlank(); return getToken();
@@ -190,7 +239,14 @@ Token* getToken(void) {
     token = makeToken(SB_SEMICOLON, lineNo, colNo);
     readChar();
     return token;
-  case CHAR_SINGLEQUOTE: return readConstChar();
+  case CHAR_SINGLEQUOTE: 
+    token = makeToken(TK_NONE, lineNo, colNo);
+    for (int i = 0; i < 3; i++) {
+      readChar();
+      if (charCodes[currentChar] != CHAR_SINGLEQUOTE)
+        error(ERR_INVALIDSYMBOL, token->lineNo, token->colNo);
+    }
+    return readConstChar();
   case CHAR_LPAR: 
     token = makeToken(SB_LPAR, lineNo, colNo);
     readChar();

@@ -1,0 +1,24 @@
+PROGRAM gk;
+
+TYPE T = INTEGER;
+VAR  A : ARRAY(. 10 .) OF T;
+     N : INTEGER;
+     K : INTEGER;
+     I : INTEGER;
+     TMP : INTEGER;
+
+BEGIN
+    N := READI;
+    FOR I := 1 TO N DO
+      BEGIN
+        A(.I.) := READI;
+      END;
+
+    K := READI;
+    TMP := 0;
+    FOR I := 1 TO N DO
+      IF A(.I.) = K THEN TMP := 1;
+    
+    CALL WRITELN;
+    CALL WRITEI(TMP);
+END.

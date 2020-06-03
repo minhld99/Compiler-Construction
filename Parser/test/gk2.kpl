@@ -1,0 +1,18 @@
+Program Minh;
+var x : Integer;
+Function WD(i : Integer) : char;
+    Begin
+        if i = 1 then WD := 'C'
+        else if i = 2 then WD := 'H'
+        else if i = 3 then WD := 'B'
+        else if i = 4 then WD := 'T'
+        else if i = 5 then WD := 'N'
+        else if i = 6 then WD := 'S'
+        else if i = 7 then WD := 'Y'
+        else WD := '0'
+    End;
+
+Begin
+    CALL READI(x);
+    CALL WRITEC (WD(x));
+End.

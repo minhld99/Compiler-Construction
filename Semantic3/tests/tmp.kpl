@@ -1,0 +1,12 @@
+Program tmp;
+procedure t(x : integer);
+    var t : integer;
+    begin
+        t := 1;
+    end;
+    call t(1);
+function f(x : integer) : integer;
+    var f : char;
+    begin
+        f := x + x;
+    end;

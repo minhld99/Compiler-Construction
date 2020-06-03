@@ -1,0 +1,20 @@
+Program Minh;
+Var n : char;
+Function CV(c : integer) : char;
+  Begin  
+    if c = 'a' then CV := 'V'
+    else if c = 'i' then CV := 'V'
+    else if c = 'u' then CV := 'V'
+    else if c = 'e' then CV := 'V'
+    else if c = 'o' then CV := 'V'
+    else CV := 'C'
+  End;
+
+Begin
+    For n := 'a' To 'z' Do
+    Begin
+      Call WriteC(n);
+      Call WriteC(CV(n));
+      Call Writeln;
+    End;
+End.
